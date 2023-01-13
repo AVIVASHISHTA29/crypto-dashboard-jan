@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+}
+
+.header h1 {
+  font-size: 1.2rem;
+  margin: 0rem;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  font-size: 1rem;
+  color: var(--grey);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--white);
+  transform: all 0.3s;
+}
