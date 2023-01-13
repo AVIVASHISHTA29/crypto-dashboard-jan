@@ -29,3 +29,28 @@
   color: var(--white);
   transform: all 0.3s;
 }
+
+.drawer-component {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .links {
+    display: none;
+  }
+
+  .drawer-component {
+    display: block;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+
+  .drawer-div {
+    width: 40vw;
+    background-color: var(--black);
+    height: 100vh;
+    padding: 0.5rem 1.5rem;
+  }
+}

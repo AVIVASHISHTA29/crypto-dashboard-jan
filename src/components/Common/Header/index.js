@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../Button";
+import TemporaryDrawer from "./drawer";
 import "./styles.css";
 
 function Header() {
@@ -21,6 +22,9 @@ function Header() {
         <a href="/dashboard">
           <Button text={"dashboard"} />
         </a>
+      </div>
+      <div className="drawer-component">
+        <TemporaryDrawer />
       </div>
     </div>
   );
