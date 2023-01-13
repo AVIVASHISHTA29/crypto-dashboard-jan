@@ -3,6 +3,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 3rem;
+  position: sticky;
+  top: 0;
+  background-color: var(--black);
+  z-index: 1000;
 }
 
 .header h1 {
@@ -44,7 +48,7 @@
   }
 
   .header {
-    padding: 1.5rem;
+    padding: 0.5rem 1.5rem;
   }
 
   .drawer-div {
