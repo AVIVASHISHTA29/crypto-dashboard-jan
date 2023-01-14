@@ -3,7 +3,7 @@
   padding: 0.45rem 1.5rem;
   border-radius: 3rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: capitalize;
   cursor: pointer;
   border: 2px solid var(--blue);
@@ -22,7 +22,7 @@
   padding: 0.45rem 1.5rem;
   border-radius: 3rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: capitalize;
   cursor: pointer;
   border: 2px solid var(--blue);
