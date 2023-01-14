@@ -36,9 +36,9 @@ function MainComponent() {
         </motion.p>
         <motion.div
           className="btn-flex"
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0, duration: 1 }}
+          transition={{ delay: 1.25, duration: 0.75 }}
         >
           <Button text={"Dashboard"} />
           <Button text={"Share App"} outlined={true} />
