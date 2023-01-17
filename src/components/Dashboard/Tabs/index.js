@@ -4,9 +4,10 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { createTheme, ThemeProvider } from "@mui/material";
+import "./styles.css";
+import Grid from "../Grid";
 
-export default function TabsComponent() {
+export default function TabsComponent({ coins }) {
   const [value, setValue] = React.useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -31,7 +32,13 @@ export default function TabsComponent() {
           <Tab label="List" value="list" sx={style} />
         </TabList>
       </div>
-      <TabPanel value="grid">Item One</TabPanel>
+      <TabPanel value="grid">
+        <div className="grid-flex">
+          {coins.map((coin, i) => (
+            <Grid coin={coin} key={i} />
+          ))}
+        </div>
+      </TabPanel>
       <TabPanel value="list">Item Two</TabPanel>
     </TabContext>
   );

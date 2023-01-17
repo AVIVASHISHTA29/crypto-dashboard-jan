@@ -36,12 +36,7 @@ function Dashboard() {
       ) : (
         <>
           <Header />
-          <TabsComponent />
-          {/* {coins.map((coin, i) => (
-            <p key={i}>
-              {i + 1}.{coin.name}
-            </p>
-          ))} */}
+          <TabsComponent coins={coins} />
         </>
       )}
     </div>
