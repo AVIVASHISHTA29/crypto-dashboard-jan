@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader";
+import TabsComponent from "../components/Dashboard/Tabs";
 
 function Dashboard() {
   const [coins, setCoins] = useState([]);
@@ -35,11 +36,12 @@ function Dashboard() {
       ) : (
         <>
           <Header />
-          {coins.map((coin, i) => (
+          <TabsComponent />
+          {/* {coins.map((coin, i) => (
             <p key={i}>
               {i + 1}.{coin.name}
             </p>
-          ))}
+          ))} */}
         </>
       )}
     </div>
