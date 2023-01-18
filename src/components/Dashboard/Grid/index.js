@@ -2,11 +2,15 @@ import React from "react";
 import "./styles.css";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import { motion } from "framer-motion";
 
-function Grid({ coin }) {
+function Grid({ coin, delay }) {
   return (
-    <div
+    <motion.div
       className={`grid ${coin.price_change_percentage_24h < 0 && "grid-red"}`}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: delay }}
     >
       <div className="img-flex">
         <img src={coin.image} className="coin-image" />
@@ -47,7 +51,7 @@ function Grid({ coin }) {
       <p className="coin-name">
         Market Capital : ${coin.market_cap.toLocaleString()}
       </p>
-    </div>
+    </motion.div>
   );
 }
 

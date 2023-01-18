@@ -3,10 +3,15 @@ import "./styles.css";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import { convertNumber } from "../../../functions/convertNumber";
-
-function List({ coin }) {
+import { motion } from "framer-motion";
+function List({ coin, delay }) {
   return (
-    <tr className="list-row">
+    <motion.tr
+      className="list-row"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: delay }}
+    >
       <td className="td-img">
         <img src={coin.image} className="coin-image coin-image-td" />
       </td>
@@ -57,7 +62,7 @@ function List({ coin }) {
         ${coin.market_cap.toLocaleString()}
       </td>
       <td className="coin-name mobile">${convertNumber(coin.market_cap)}</td>
-    </tr>
+    </motion.tr>
   );
 }
 
