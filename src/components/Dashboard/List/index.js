@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import { convertNumber } from "../../../functions/convertNumber";
 
 function List({ coin }) {
   return (
@@ -55,6 +56,7 @@ function List({ coin }) {
       <td className="coin-name td-marketCap">
         ${coin.market_cap.toLocaleString()}
       </td>
+      <td className="coin-name mobile">${convertNumber(coin.market_cap)}</td>
     </tr>
   );
 }

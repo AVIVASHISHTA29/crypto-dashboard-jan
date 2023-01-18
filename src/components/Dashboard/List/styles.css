@@ -32,6 +32,10 @@
   text-align: right !important;
 }
 
+.mobile {
+  display: none;
+}
+
 @media only screen and (max-width: 900px) {
   .td-chip-icon {
     display: none;
@@ -60,5 +64,14 @@
 
   .td-info {
     width: 6rem !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .td-marketCap {
+    display: none;
+  }
+  .mobile {
+    display: block !important;
+    text-align: right !important;
   }
 }
