@@ -1,0 +1,64 @@
+.list-row {
+  width: 90%;
+  margin-bottom: 2rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.list-row td {
+  width: 20%;
+  text-align: left;
+}
+
+.td-img {
+  width: 3rem !important;
+  margin-right: 1rem;
+}
+
+.td-info {
+  width: 10rem !important;
+}
+
+.td-current-price {
+  width: 6rem !important;
+  text-align: right !important;
+}
+
+.td-totalVolume,
+.td-marketCap {
+  text-align: right !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .td-chip-icon {
+    display: none;
+  }
+
+  .list-row td {
+    font-size: 0.7rem;
+  }
+
+  .td-totalVolume {
+    display: none;
+  }
+
+  .td-current-price {
+    text-align: center !important;
+  }
+
+  .list-row {
+    width: 100%;
+  }
+
+  .coin-image-td {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .td-info {
+    width: 6rem !important;
+  }
+}
