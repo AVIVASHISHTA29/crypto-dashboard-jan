@@ -74,4 +74,8 @@
     display: block !important;
     text-align: right !important;
   }
+  .list-row td,
+  .td-p {
+    font-size: 0.6rem !important;
+  }
 }

@@ -13,8 +13,8 @@ function List({ coin }) {
 
       <td className="td-info">
         <div className="info-flex">
-          <p className="coin-symbol">{coin.symbol}</p>
-          <p className="coin-name">{coin.name}</p>
+          <p className="coin-symbol td-p">{coin.symbol}</p>
+          <p className="coin-name td-p">{coin.name}</p>
         </div>
       </td>
 
