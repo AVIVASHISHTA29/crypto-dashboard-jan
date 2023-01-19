@@ -29,3 +29,6 @@ function App() {
 }
 
 export default App;
+
+// TODO: TOOLTIP
+// todo: pagination + Coin page
