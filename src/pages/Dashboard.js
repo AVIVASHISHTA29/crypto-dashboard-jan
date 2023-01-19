@@ -4,12 +4,16 @@ import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader";
 import Search from "../components/Dashboard/Search";
 import TabsComponent from "../components/Dashboard/Tabs";
-import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
+
+import PaginationComponent from "../components/Dashboard/Pagination";
+import TopButton from "../components/Common/TopButton";
 
 function Dashboard() {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [paginatedCoins, setPaginatedCoins] = useState([]);
 
   useEffect(() => {
     // Get 100 Coins
@@ -25,6 +29,7 @@ function Dashboard() {
       .then((response) => {
         console.log("RESPONSE>>>", response.data);
         setCoins(response.data);
+        setPaginatedCoins(response.data.slice(0, 10));
         setLoading(false);
       })
       .catch((error) => {
@@ -52,48 +57,48 @@ function Dashboard() {
       coin.symbol.toLowerCase().includes(search.trim().toLowerCase())
   );
 
-  // Get the button
-  let mybutton = document.getElementById("top-btn");
-
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function () {
-    scrollFunction();
+  const handlePageChange = (event, value) => {
+    setPage(value);
+    // Value = new page number
+    var initialCount = (value - 1) * 10;
+    setPaginatedCoins(coins.slice(initialCount, initialCount + 10));
   };
 
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 500 ||
-      document.documentElement.scrollTop > 500
-    ) {
-      mybutton.style.display = "flex";
-    } else {
-      mybutton.style.display = "none";
-    }
-  }
-
   return (
-    <div>
+    <>
       {loading ? (
         <Loader />
       ) : (
         <>
           <Header />
           <Search search={search} handleChange={handleChange} />
-          <TabsComponent coins={filteredCoins} />
+          <TabsComponent
+            coins={search ? filteredCoins : paginatedCoins}
+            setSearch={setSearch}
+          />
+          {!search && (
+            <PaginationComponent
+              page={page}
+              handlePageChange={handlePageChange}
+            />
+          )}
         </>
       )}
-      <div
-        className="top-btn"
-        id="top-btn"
-        onClick={() => {
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
-        }}
-      >
-        <ExpandLessRoundedIcon />
-      </div>
-    </div>
+      <TopButton />
+    </>
   );
 }
 
 export default Dashboard;
+
+// coins == 100 coins
+
+// PaginatedCoins -> Page 1 - coins.slice(0,10)
+// PaginatedCoins -> Page 2 = coins.slice(10,20)
+// PaginatedCoins -> Page 3 = coins.slice(20,30)
+// .
+// .
+// PaginatedCoins -> Page 10 = coins.slice(90,100)
+
+// PaginatedCoins -> Page X , then initial Count = (X-1)*10
+// coins.slice(initialCount,initialCount+10)

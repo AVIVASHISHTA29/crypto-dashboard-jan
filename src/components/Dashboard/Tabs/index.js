@@ -7,8 +7,9 @@ import "./styles.css";
 import Grid from "../Grid";
 import List from "../List";
 import { convertNumber } from "../../../functions/convertNumber";
+import Button from "../../Common/Button";
 
-export default function TabsComponent({ coins }) {
+export default function TabsComponent({ coins, setSearch }) {
   const [value, setValue] = React.useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -35,16 +36,50 @@ export default function TabsComponent({ coins }) {
       </div>
       <TabPanel value="grid">
         <div className="grid-flex">
-          {coins.map((coin, i) => (
-            <Grid coin={coin} key={i} delay={(i % 4) * 0.2} />
-          ))}
+          {coins.length > 0 ? (
+            coins.map((coin, i) => (
+              <Grid coin={coin} key={i} delay={(i % 4) * 0.2} />
+            ))
+          ) : (
+            <div>
+              <h1 style={{ textAlign: "center" }}>
+                Sorry, Couldn't find the coin you're looking for 😞
+              </h1>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "2rem",
+                }}
+              >
+                <Button text="Clear Search" onClick={() => setSearch("")} />
+              </div>
+            </div>
+          )}
         </div>
       </TabPanel>
       <TabPanel value="list">
         <table className="list-flex">
-          {coins.map((coin, i) => (
-            <List coin={coin} key={i} delay={(i % 8) * 0.2} />
-          ))}
+          {coins.length > 0 ? (
+            coins.map((coin, i) => (
+              <List coin={coin} key={i} delay={(i % 8) * 0.2} />
+            ))
+          ) : (
+            <div>
+              <h1 style={{ textAlign: "center" }}>
+                Sorry, Couldn't find the coin you're looking for 😞
+              </h1>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "2rem",
+                }}
+              >
+                <Button text="Clear Search" onClick={() => setSearch("")} />
+              </div>
+            </div>
+          )}
         </table>
       </TabPanel>
     </TabContext>
