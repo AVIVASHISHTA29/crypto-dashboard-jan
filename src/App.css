@@ -14,3 +14,13 @@
   z-index: 1000;
   cursor: pointer;
 }
+
+.grey-wrapper {
+  background-color: var(--darkgrey);
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  border-radius: 1rem;
+  width: 90%;
+  display: block;
+  margin: 1.5rem auto;
+}
