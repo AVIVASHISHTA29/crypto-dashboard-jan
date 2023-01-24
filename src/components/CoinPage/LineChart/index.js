@@ -6,7 +6,7 @@ function LineChart({ chartData }) {
   const options = {
     plugins: {
       legend: {
-        display: true,
+        display: false,
       },
     },
     responsive: true,

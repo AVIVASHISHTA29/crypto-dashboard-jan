@@ -1,14 +1,17 @@
-import { getDateRangePickerDayUtilityClass } from "@mui/lab";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Info from "../components/CoinPage/Info";
 import LineChart from "../components/CoinPage/LineChart";
+import SelectDays from "../components/CoinPage/SelectDays";
+import ToggleComponents from "../components/CoinPage/ToggleComponent";
 import Button from "../components/Common/Button";
 import Header from "../components/Common/Header";
 import Loader from "../components/Common/Loader";
 import List from "../components/Dashboard/List";
-import { gettingDate } from "../functions/getDate";
+import { getCoinData } from "../functions/getCoinData";
+import { getPrices } from "../functions/getPrices";
+import { settingChartData } from "../functions/settingChartData";
+import { settingCoinObject } from "../functions/settingCoinObject";
 
 function Coin() {
   const { id } = useParams();
@@ -17,6 +20,7 @@ function Coin() {
   const [chartData, setChartData] = useState({ labels: [], datasets: [{}] });
   const [coin, setCoin] = useState({});
   const [days, setDays] = useState(30);
+  const [priceType, setPriceType] = useState("prices");
 
   useEffect(() => {
     if (id) {
@@ -24,64 +28,38 @@ function Coin() {
     }
   }, [id]);
 
-  const getData = () => {
+  const getData = async () => {
     setLoading(true);
-    axios
-      .get(`https://api.coingecko.com/api/v3/coins/${id}`)
-      .then((response) => {
-        if (response.data) {
-          setCoin({
-            id: response.data.id,
-            name: response.data.name,
-            symbol: response.data.symbol,
-            image: response.data.image.large,
-            desc: response.data.description.en,
-            price_change_percentage_24h:
-              response.data.market_data.price_change_percentage_24h,
-            total_volume: response.data.market_data.total_volume.usd,
-            current_price: response.data.market_data.current_price.usd,
-            market_cap: response.data.market_data.market_cap.usd,
-          });
-          setLoading(false);
-        }
-      })
-      .catch((e) => {
-        console.log(e.message);
-        setError(true);
+    let coinData = await getCoinData(id, setError);
+    console.log("Coin DATA>>>>", coinData);
+    settingCoinObject(coinData, setCoin);
+    if (coinData) {
+      const prices = await getPrices(id, days, priceType, setError);
+      if (prices) {
+        settingChartData(setChartData, prices);
         setLoading(false);
-      });
+      }
+    }
+  };
 
-    axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${30}&interval=daily`
-      )
-      .then((response) => {
-        if (response.data) {
-          console.log("Prices>>>", response.data.prices);
-          const prices = response.data.prices;
-          setChartData({
-            labels: prices.map((data) => gettingDate(data[0])),
-            datasets: [
-              {
-                label: coin.name,
-                data: prices.map((data) => data[1]),
-                borderWidth: 1,
-                fill: false,
-                backgroundColor: "rgba(58, 128, 233,0.1)",
-                tension: 0.25,
-                borderColor: "#3a80e9",
-                pointRadius: 0,
-              },
-            ],
-          });
-          setLoading(false);
-        }
-      })
-      .catch((e) => {
-        console.log(e.message);
-        setError(true);
-        setLoading(false);
-      });
+  const handleDaysChange = async (event) => {
+    setLoading(true);
+    setDays(event.target.value);
+    const prices = await getPrices(id, event.target.value, priceType, setError);
+    if (prices) {
+      settingChartData(setChartData, prices);
+      setLoading(false);
+    }
+  };
+
+  const handlePriceTypeChange = async (event) => {
+    setLoading(true);
+    setPriceType(event.target.value);
+    const prices = await getPrices(id, days, event.target.value, setError);
+    if (prices) {
+      settingChartData(setChartData, prices);
+      setLoading(false);
+    }
   };
 
   return (
@@ -93,6 +71,11 @@ function Coin() {
             <List coin={coin} delay={0.5} />
           </div>
           <div className="grey-wrapper">
+            <SelectDays handleDaysChange={handleDaysChange} days={days} />
+            <ToggleComponents
+              priceType={priceType}
+              handlePriceTypeChange={handlePriceTypeChange}
+            />
             <LineChart chartData={chartData} />
           </div>
           <Info title={coin.name} desc={coin.desc} />
