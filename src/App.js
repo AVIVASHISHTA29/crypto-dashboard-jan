@@ -2,6 +2,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Coin from "./pages/Coin";
+import Compare from "./pages/Compare";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/coin/:id" element={<Coin />} />
+            <Route path="/compare" element={<Compare />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

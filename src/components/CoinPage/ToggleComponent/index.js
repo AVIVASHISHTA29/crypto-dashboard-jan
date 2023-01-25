@@ -30,9 +30,9 @@ export default function ToggleComponents({ priceType, handlePriceTypeChange }) {
           borderColor: "var(--blue)",
           border: "unset !important",
           "& .MuiToggleButtonGroup-grouped": {
-            border: "1px solid !important",
+            border: "1px solid var(--blue)!important",
             borderColor: "unset",
-            color: "var(--blue)",
+            color: "var(--blue) ",
           },
           "& .MuiToggleButton-standard": {
             color: "var(--blue)",

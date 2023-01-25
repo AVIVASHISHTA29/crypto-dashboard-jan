@@ -2,10 +2,10 @@ import { MenuItem, Select } from "@mui/material";
 import React, { useState } from "react";
 import "./styles.css";
 
-function SelectDays({ days, handleDaysChange }) {
+function SelectDays({ days, handleDaysChange, noPTag }) {
   return (
-    <div className="select-days">
-      <p>Price change in </p>
+    <div className="select-days" style={{ marginBottom: noPTag && "0" }}>
+      {!noPTag && <p>Price change in </p>}
       <Select
         value={days}
         onChange={(e) => handleDaysChange(e)}
