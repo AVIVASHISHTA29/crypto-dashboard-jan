@@ -27,6 +27,7 @@
   cursor: pointer;
   border: 2px solid var(--blue);
   min-width: 80px;
+  color: var(--white);
 }
 
 .btn-outlined:hover {

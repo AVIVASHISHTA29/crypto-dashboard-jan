@@ -5,6 +5,9 @@ import Coin from "./pages/Coin";
 import Compare from "./pages/Compare";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
+import Watchlist from "./pages/Watchlist";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const theme = createTheme({
@@ -17,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
@@ -24,6 +28,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/coin/:id" element={<Coin />} />
             <Route path="/compare" element={<Compare />} />
+            <Route path="/watchlist" element={<Watchlist />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
