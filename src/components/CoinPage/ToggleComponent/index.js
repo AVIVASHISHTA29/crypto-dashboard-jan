@@ -21,7 +21,6 @@ export default function ToggleComponents({ priceType, handlePriceTypeChange }) {
         exclusive
         onChange={(e) => {
           handlePriceTypeChange(e);
-          console.log("hiiii", e.target.value);
         }}
         sx={{
           "&.Mui-selected": {
@@ -32,10 +31,10 @@ export default function ToggleComponents({ priceType, handlePriceTypeChange }) {
           "& .MuiToggleButtonGroup-grouped": {
             border: "1px solid var(--blue)!important",
             borderColor: "unset",
-            color: "var(--blue) ",
+            color: "var(--blue) !important ",
           },
           "& .MuiToggleButton-standard": {
-            color: "var(--blue)",
+            color: "var(--blue) !important",
           },
         }}
       >

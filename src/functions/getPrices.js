@@ -19,7 +19,9 @@ export const getPrices = (id, days, priceType, setError) => {
     })
     .catch((e) => {
       console.log(e.message);
-      setError(true);
+      if (setError) {
+        setError(true);
+      }
     });
 
   return prices;
