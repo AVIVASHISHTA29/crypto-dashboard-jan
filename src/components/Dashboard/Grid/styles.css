@@ -27,6 +27,23 @@
   gap: 1rem;
 }
 
+.icon-flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.watchlist-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  color: var(--green);
+  padding: 0.5rem;
+}
+
 .coin-image {
   height: 3rem;
   width: 3rem;
