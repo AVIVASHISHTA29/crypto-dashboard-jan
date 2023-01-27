@@ -102,11 +102,11 @@ function Compare() {
 
   return (
     <div>
+      <Header />
       {loading || !coin1Data?.id || !coin2Data?.id ? (
         <Loader />
       ) : (
         <>
-          <Header />
           <SelectCoins
             allCoins={allCoins}
             crypto1={crypto1}

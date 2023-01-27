@@ -66,11 +66,11 @@ function Dashboard() {
 
   return (
     <>
+      <Header />
       {loading ? (
         <Loader />
       ) : (
         <>
-          <Header />
           <Search search={search} handleChange={handleChange} />
           <TabsComponent
             coins={search ? filteredCoins : paginatedCoins}

@@ -63,7 +63,7 @@
 
   .list-row {
     width: 100%;
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem 0rem;
   }
 
   .coin-image-td {
@@ -76,15 +76,25 @@
   }
 }
 @media only screen and (max-width: 600px) {
-  .td-marketCap {
-    display: none;
+  .td-marketCap,
+  .td-chip-icon {
+    display: none !important;
   }
   .mobile {
     display: block !important;
-    text-align: right !important;
+    text-align: left !important;
   }
   .list-row td,
   .td-p {
     font-size: 0.6rem !important;
+  }
+
+  .td-info {
+    width: 4rem !important;
+  }
+
+  .coin-image-td {
+    height: 2rem !important;
+    width: 2rem !important;
   }
 }

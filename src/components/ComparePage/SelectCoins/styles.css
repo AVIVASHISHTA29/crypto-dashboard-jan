@@ -4,6 +4,7 @@
   align-items: center;
   gap: 1.5rem;
   margin: 1.5rem 3rem;
+  flex-wrap: wrap;
 }
 
 .select-flex {
