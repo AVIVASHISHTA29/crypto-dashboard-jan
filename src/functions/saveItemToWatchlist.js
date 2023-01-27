@@ -7,13 +7,25 @@ export const saveItemToWatchlist = (e, id) => {
   if (watchlist) {
     if (!watchlist.includes(id)) {
       watchlist.push(id);
-      toast.success(`${id} - added to the watchlist`);
+      toast.success(
+        `${
+          id.substring(0, 1).toUpperCase() + id.substring(1)
+        } - added to the watchlist`
+      );
     } else {
-      toast.error(`${id} - is already added to the watchlist!`);
+      toast.error(
+        `${
+          id.substring(0, 1).toUpperCase() + id.substring(1)
+        } - is already added to the watchlist!`
+      );
     }
   } else {
     watchlist = [id];
-    toast.success(`${id} - added to the watchlist`);
+    toast.success(
+      `${
+        id.substring(0, 1).toUpperCase() + id.substring(1)
+      } - added to the watchlist`
+    );
   }
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 };

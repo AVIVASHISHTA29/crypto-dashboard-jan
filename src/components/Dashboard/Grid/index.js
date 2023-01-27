@@ -28,12 +28,14 @@ function Grid({ coin, delay }) {
               <p className="coin-name">{coin.name}</p>
             </div>
             <div
-              className="watchlist-icon"
+              className={`watchlist-icon ${
+                coin.price_change_percentage_24h < 0 && "watchlist-icon-red"
+              }`}
               onClick={(e) => {
                 if (isCoinAdded) {
                   // remove coin
-                  setIsCoinAdded(false);
-                  removeItemToWatchlist(e, coin.id);
+
+                  removeItemToWatchlist(e, coin.id, setIsCoinAdded);
                 } else {
                   setIsCoinAdded(true);
                   saveItemToWatchlist(e, coin.id);

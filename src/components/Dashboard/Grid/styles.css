@@ -42,6 +42,13 @@
   border-radius: 50%;
   color: var(--green);
   padding: 0.5rem;
+  height: 1.5rem;
+  width: 1.5rem !important;
+}
+
+.watchlist-icon-red {
+  border: 2px solid var(--red);
+  color: var(--red);
 }
 
 .coin-image {
