@@ -12,6 +12,7 @@ export const removeItemToWatchlist = (e, id, setIsCoinAdded) => {
         id.substring(0, 1).toUpperCase() + id.substring(1)
       } - has been removed!`
     );
+    window.location.reload();
   } else {
     toast.error(
       `${

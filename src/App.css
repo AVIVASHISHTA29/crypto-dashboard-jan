@@ -13,6 +13,7 @@
   right: 1rem;
   z-index: 1000;
   cursor: pointer;
+  color: var(--white);
 }
 
 .grey-wrapper {

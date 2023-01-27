@@ -10,7 +10,7 @@ import { removeItemToWatchlist } from "../../../functions/removeItemToWatchlist"
 
 function Grid({ coin, delay }) {
   const watchlist = JSON.parse(localStorage.getItem("watchlist"));
-  const [isCoinAdded, setIsCoinAdded] = useState(watchlist.includes(coin.id));
+  const [isCoinAdded, setIsCoinAdded] = useState(watchlist?.includes(coin.id));
 
   return (
     <a href={`/coin/${coin.id}`}>
